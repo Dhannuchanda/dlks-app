@@ -19,6 +19,20 @@
 
 <body>
 
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="logo/images.jpg" alt="Loading..." class="preloader-img">
+                <div class="preloader-ring"></div>
+            </div>
+            <div class="preloader-text">Dhanalakshmi Kiranam</div>
+            <div class="preloader-bar">
+                <div class="preloader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
@@ -283,6 +297,35 @@
                     width="100%" height="350" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+                <!-- Google Rating Popup -->
+                <div class="map-rating-popup">
+                    <div class="rating-popup-header">
+                        <img src="logo/images.jpg" alt="Dhanalakshmi Kiranam" class="rating-popup-logo">
+                        <div class="rating-popup-info">
+                            <span class="rating-popup-name">Dhanalakshmi Kiranam</span>
+                            <span class="rating-popup-type">Grocery Store</span>
+                        </div>
+                    </div>
+                    <div class="rating-popup-score">
+                        <span class="rating-number">4.5</span>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-count">(120+ reviews)</span>
+                    </div>
+                    <div class="rating-popup-status">
+                        <span class="status-dot open"></span>
+                        <span class="status-text">Open Now</span>
+                    </div>
+                    <a href="https://www.google.com/maps?ll=18.367891,79.850179&z=20&t=m&hl=en&gl=IN&mapclient=embed&cid=12777362630127010379"
+                        target="_blank" class="rating-popup-btn">
+                        <i class="fab fa-google"></i> View on Google Maps
+                    </a>
+                </div>
             </div>
             <div class="map-link">
                 <a href="https://www.google.com/maps?ll=18.367891,79.850179&z=20&t=m&hl=en&gl=IN&mapclient=embed&cid=12777362630127010379"
@@ -340,6 +383,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919866763240?text=Hi%20Dhanalakshmi%20Kiranam!%20I%20have%20an%20inquiry." target="_blank"
+        class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us!</span>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

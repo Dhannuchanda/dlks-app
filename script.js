@@ -373,6 +373,91 @@ function setupContactForm() {
 }
 
 // ================================== //
+//   Preloader                        //
+// ================================== //
+
+function setupPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+
+    const minDisplayTime = 800;
+    const startTime = Date.now();
+
+    window.addEventListener('load', () => {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, minDisplayTime - elapsed);
+
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            // Remove from DOM after transition
+            setTimeout(() => preloader.remove(), 600);
+        }, remaining);
+    });
+}
+
+// Start preloader immediately (before DOMContentLoaded)
+setupPreloader();
+
+// ================================== //
+//   Back to Top Button               //
+// ================================== //
+
+function setupBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ================================== //
+//   Dynamic Store Status             //
+// ================================== //
+
+function updateStoreStatus() {
+    const statusDot = document.querySelector('.status-dot');
+    const statusText = document.querySelector('.status-text');
+    if (!statusDot || !statusText) return;
+
+    // Get current time in IST
+    const now = new Date();
+    const istOffset = 5.5 * 60; // IST is UTC+5:30
+    const utcMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+    const istMinutes = utcMinutes + istOffset;
+    const istHour = Math.floor((istMinutes / 60) % 24);
+    const day = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })).getDay();
+
+    let isOpen = false;
+
+    if (day === 0) {
+        // Sunday: 8 AM - 2 PM
+        isOpen = istHour >= 8 && istHour < 14;
+    } else {
+        // Monday-Saturday: 7 AM - 9 PM
+        isOpen = istHour >= 7 && istHour < 21;
+    }
+
+    if (isOpen) {
+        statusDot.className = 'status-dot open';
+        statusText.textContent = 'Open Now';
+        statusText.style.color = '#16a34a';
+    } else {
+        statusDot.className = 'status-dot closed';
+        statusText.textContent = 'Closed';
+        statusText.style.color = '#dc2626';
+    }
+}
+
+// ================================== //
 //   Initialize Everything            //
 // ================================== //
 
@@ -386,4 +471,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCardTilt();
     setupScrollProgress();
     setupContactForm();
+    setupBackToTop();
+    updateStoreStatus();
 });
